@@ -68,17 +68,13 @@ export default () => {
         }
         await cubeApp.addModule(m);
 
-        for (const {key, value} of components) {
-            groundApp.setComponent(key, value);
-        }
-        await groundApp.addModule(m2);
 
     
         scene.add(cubeApp);
         scene.add(groundApp);
         cubeApp.addEventListener('use', e => {
         {
-            cubeApp.scale.set(new Vector3(10,10,10));
+            //play animation
         }
         });
     }
