@@ -43,12 +43,7 @@ export default () => {
         cubeApp = metaversefile.createApp({
             name: u2,
         });
-
-        const m2 = await metaversefile.import(g);
-        groundApp = metaversefile.createApp({
-            name: g,
-        });
-      
+        
         const components = [
             {
             "key": "instanceId",
@@ -63,7 +58,7 @@ export default () => {
             "value": true, 
             }
         ];
-      
+        
         for (const {key, value} of components) {
             cubeApp.setComponent(key, value);
         }
@@ -72,7 +67,7 @@ export default () => {
         var geometry = new THREE.PlaneGeometry(60, 60, 199, 199);
 
         for (var i = 0, l = geometry.vertices.length; i < l; i++) {
-        geometry.vertices[i].z = Math,seededRandom(0.7) / 65535 * 10;
+        geometry.vertices[i].z = seededRandom(0.7) / 65535 * 10;
         }
 
         var material = new THREE.MeshPhongMaterial({
@@ -83,7 +78,7 @@ export default () => {
         var plane = new THREE.Mesh(geometry, material);
         scene.add(plane);
 
-    
+
         scene.add(cubeApp);
 
         cubeApp.addEventListener('use', e => {
