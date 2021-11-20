@@ -56,7 +56,7 @@ export default () => {
             cubeApp.setComponent(key, value);
         }
         await cubeApp.addModule(m);
-        var geometry = new THREE.PlaneGeometry (60, 60, 9, 9);
+        var geometry = new THREE.PlaneGeometry (500, 500, 9, 9);
         var plane = new THREE.Mesh(geometry, material);
         scene.add(plane);
         scene.add(cubeApp);
