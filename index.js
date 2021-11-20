@@ -32,9 +32,21 @@ export default () => {
         if (/^https?:/.test(u2)) {
             u2 = '/@proxy/' + u2;
         }
+
+        let g = `${baseUrl}ground.glb`;
+        if (/^https?:/.test(g)) {
+            g = '/@proxy/' + g;
+        }
+
         const m = await metaversefile.import(u2);
         cubeApp = metaversefile.createApp({
             name: u2,
+        });
+
+        
+        const m2 = await metaversefile.import(g);
+        groundApp = metaversefile.createApp({
+            name: g,
         });
       
         const components = [
@@ -56,9 +68,13 @@ export default () => {
             cubeApp.setComponent(key, value);
         }
         await cubeApp.addModule(m);
-        var geometry = new THREE.PlaneGeometry (500, 500, 9, 9);
-        var plane = new THREE.Mesh(geometry, material);
-        scene.add(plane);
+
+        for (const {key, value} of components) {
+            groundApp.setComponent(key, value);
+        }
+        await groundApp.addModule(m2);
+
+        scene.add(groundApp);
         scene.add(cubeApp);
 
         cubeApp.addEventListener('use', e => {
