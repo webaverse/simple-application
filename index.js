@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import metaversefile from 'metaversefile';
+import { seededRandom } from 'three/src/math/mathutils';
 const {
     //Get the main application
   useApp, 
@@ -71,7 +72,7 @@ export default () => {
         var geometry = new THREE.PlaneGeometry(60, 60, 199, 199);
 
         for (var i = 0, l = geometry.vertices.length; i < l; i++) {
-        geometry.vertices[i].z = data[i] / 65535 * 10;
+        geometry.vertices[i].z = Math,seededRandom(0.7) / 65535 * 10;
         }
 
         var material = new THREE.MeshPhongMaterial({
