@@ -1,0 +1,12 @@
+{
+  "name": "Simple Application",
+  "description": "Simple Application",
+  "xr_type": "webxr-site@0.0.1",
+  "start_url": "cube.glb",
+  "components": [
+    {
+      "type": "use",
+      "useAnimation": "dance"
+    }
+  ]
+}
