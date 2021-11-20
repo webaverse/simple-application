@@ -43,7 +43,6 @@ export default () => {
             name: u2,
         });
 
-        
         const m2 = await metaversefile.import(g);
         groundApp = metaversefile.createApp({
             name: g,
@@ -74,9 +73,9 @@ export default () => {
         }
         await groundApp.addModule(m2);
 
-        scene.add(groundApp);
+    
         scene.add(cubeApp);
-
+        scene.add(groundApp);
         cubeApp.addEventListener('use', e => {
         {
             cubeApp.scale.set(new Vector3(10,10,10));
