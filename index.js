@@ -68,10 +68,23 @@ export default () => {
         }
         await cubeApp.addModule(m);
 
+        var geometry = new THREE.PlaneGeometry(60, 60, 199, 199);
+
+        for (var i = 0, l = geometry.vertices.length; i < l; i++) {
+        geometry.vertices[i].z = data[i] / 65535 * 10;
+        }
+
+        var material = new THREE.MeshPhongMaterial({
+        color: 0xdddddd, 
+        wireframe: true
+        });
+
+        var plane = new THREE.Mesh(geometry, material);
+        scene.add(plane);
 
     
         scene.add(cubeApp);
-        scene.add(groundApp);
+
         cubeApp.addEventListener('use', e => {
         {
             //play animation
