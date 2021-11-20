@@ -28,41 +28,44 @@ export default () => {
 
   (async () => {
     {
-      let u2 = `${baseUrl}cube.glb`;
-      if (/^https?:/.test(u2)) {
-        u2 = '/@proxy/' + u2;
-      }
-      const m = await metaversefile.import(u2);
-      cubeApp = metaversefile.createApp({
-        name: u2,
-      });
-      
-      const components = [
-        {
-          "key": "instanceId",
-          "value": getNextInstanceId(),
-        },
-        {
-          "key": "contentId",
-          "value": u2,
-        },
-        {
-          "key": "physics",
-          "value": true, 
+        let u2 = `${baseUrl}cube.glb`;
+        if (/^https?:/.test(u2)) {
+            u2 = '/@proxy/' + u2;
         }
-      ];
+        const m = await metaversefile.import(u2);
+        cubeApp = metaversefile.createApp({
+            name: u2,
+        });
       
-      for (const {key, value} of components) {
-        cubeApp.setComponent(key, value);
-      }
-      await cubeApp.addModule(m);
-      scene.add(cubeApp);
+        const components = [
+            {
+            "key": "instanceId",
+            "value": getNextInstanceId(),
+            },
+            {
+            "key": "contentId",
+            "value": u2,
+            },
+            {
+            "key": "physics",
+            "value": true, 
+            }
+        ];
       
-      cubeApp.addEventListener('use', e => {
-        {
-           cubeApp.scale.set(new Vector3(10,10,10));
+        for (const {key, value} of components) {
+            cubeApp.setComponent(key, value);
         }
-      });
+        await cubeApp.addModule(m);
+        var geometry = new THREE.PlaneGeometry (60, 60, 9, 9);
+        var plane = new THREE.Mesh(geometry, material);
+        scene.add(plane);
+        scene.add(cubeApp);
+
+        cubeApp.addEventListener('use', e => {
+        {
+            cubeApp.scale.set(new Vector3(10,10,10));
+        }
+        });
     }
   })();
   
