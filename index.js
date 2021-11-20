@@ -64,22 +64,6 @@ export default () => {
         }
         await cubeApp.addModule(m);
 
-        var geometry = new THREE.PlaneGeometry(60, 60, 199, 199);
-
-
-
-        var material = new THREE.MeshPhongMaterial({
-        color: 0xdddddd, 
-
-        });
-
-        var plane = new THREE.Mesh(geometry, material);
-
-        plane.position.set(0,0,0);
-        
-        scene.add(plane);
-
-
         scene.add(cubeApp);
 
         cubeApp.addEventListener('use', e => {
